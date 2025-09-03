@@ -131,7 +131,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
   thead tr th {
     position: sticky;
@@ -147,5 +150,9 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  .text-wrap-anywhere {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }

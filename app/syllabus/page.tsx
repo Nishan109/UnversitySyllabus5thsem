@@ -7,7 +7,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Fragment } from "react"
+import { Fragment, useEffect, useState } from "react"
 
 type Course = {
   code: string
@@ -146,7 +146,7 @@ function sum<T extends keyof Course>(k: T) {
 
 function CompilerDesignDetails() {
   return (
-    <div className="space-y-8 text-sm leading-6">
+    <div className="space-y-6 md:space-y-8 text-sm leading-relaxed">
       <section id="cd-overview" className="scroll-mt-24">
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
           <div>
@@ -268,7 +268,140 @@ function CompilerDesignDetails() {
   )
 }
 
+function DbmsDetails() {
+  return (
+    <div className="space-y-6 md:space-y-8 text-sm leading-relaxed">
+      <section id="dbms-overview" className="scroll-mt-24">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground">Subject</h3>
+            <p className="font-medium">Database Management System</p>
+            <p className="text-xs text-muted-foreground">BCSES1-502</p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground">L-T-P-C</h3>
+            <p className="font-medium">3-0-0-3</p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground">Duration</h3>
+            <p className="font-medium">45 Hours</p>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium text-muted-foreground">Semester</h3>
+            <p className="font-medium">5th</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="dbms-objective" className="scroll-mt-24">
+        <h3 className="mb-2 text-base font-semibold tracking-tight">Course Objective</h3>
+        <p className="text-pretty">
+          This course helps students understand the concepts used in database management systems. Students will create
+          databases using DDL and DML, learn to implement database security, and get exposure to advanced topics.
+        </p>
+      </section>
+
+      <section id="dbms-outcomes" className="scroll-mt-24">
+        <h3 className="mb-2 text-base font-semibold tracking-tight">Course Outcomes</h3>
+        <ul className="list-outside list-disc space-y-2 pl-5">
+          <li>Learn different DBMS languages, data models, and normalization.</li>
+          <li>
+            For a given specification, construct SQL queries for open source and commercial DBMS – MySQL, Oracle, DB2.
+          </li>
+          <li>Understand query processing and transaction processing systems.</li>
+          <li>Implement database security and recovery techniques.</li>
+        </ul>
+      </section>
+
+      <Separator />
+
+      <section id="dbms-contents" className="space-y-5 scroll-mt-24">
+        <h3 className="text-base font-semibold tracking-tight">Course Contents</h3>
+
+        <div>
+          <h4 className="font-medium">Unit I (11 Hrs)</h4>
+          <ul className="list-outside list-disc space-y-2 pl-5">
+            <li>
+              Database system architecture: introduction, Data Abstraction, Data Independence, DDL (Data Definition
+              Language), DML (Data Manipulation Language).
+            </li>
+            <li>Data models: ER model, network, relational and object-oriented data models; integrity constraints.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-medium">Unit II (11 Hrs)</h4>
+          <ul className="list-outside list-disc space-y-2 pl-5">
+            <li>
+              Relational query languages: relational algebra, tuple and domain relational calculus, SQL3; DDL/DML
+              constructs; introduction to MySQL, Oracle, DB2, SQL Server.
+            </li>
+            <li>
+              Relational database design: domains and dependencies, normal forms, dependency preservation, lossless
+              design.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-medium">Unit III (12 Hrs)</h4>
+          <ul className="list-outside list-disc space-y-2 pl-5">
+            <li>
+              Query processing and optimization: evaluating relational algebra expressions, query equivalence, join
+              strategies, optimization algorithms.
+            </li>
+            <li>
+              Transaction processing: concurrency control, ACID, serializability, locking and timestamp schedulers,
+              multi-version and optimistic concurrency control.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="font-medium">Unit IV (11 Hrs)</h4>
+          <ul className="list-outside list-disc space-y-2 pl-5">
+            <li>Database recovery: log-based recovery, shadow-page recovery.</li>
+            <li>
+              Database security: authentication, authorization and access control; DAC, MAC and RBAC models; intro to
+              SQL injection.
+            </li>
+            <li>Advanced topics: introduction to object-oriented and distributed databases.</li>
+          </ul>
+        </div>
+      </section>
+
+      <Separator />
+
+      <section id="dbms-books" className="scroll-mt-24">
+        <h3 className="mb-2 text-base font-semibold tracking-tight">Recommended Books</h3>
+        <ol className="list-outside list-decimal space-y-2 pl-5">
+          <li>Silberschatz, Korth, Sudarshan, “Database System Concepts”, 6th Ed., McGraw-Hill.</li>
+          <li>J. D. Ullman, “Principles of Database and Knowledge-Base Systems”, Vol. 1, Computer Science Press.</li>
+          <li>Elmasri, Navathe, “Fundamentals of Database Systems”, 5th Ed., Pearson Education.</li>
+          <li>Abiteboul, Hull, Vianu, “Foundations of Databases”, Addison-Wesley.</li>
+        </ol>
+      </section>
+    </div>
+  )
+}
+
 export default function SyllabusPage() {
+  const [cdOpen, setCdOpen] = useState(false)
+  const [dbmsOpen, setDbmsOpen] = useState(false)
+
+  useEffect(() => {
+    const anyOpen = cdOpen || dbmsOpen
+    if (!anyOpen) return
+    const prevBodyOverflow = document.body.style.overflow
+    const prevHtmlOverflowY = document.documentElement.style.overflowY
+    document.body.style.overflow = "hidden"
+    document.documentElement.style.overflowY = "hidden"
+    return () => {
+      document.body.style.overflow = prevBodyOverflow
+      document.documentElement.style.overflowY = prevHtmlOverflowY
+    }
+  }, [cdOpen, dbmsOpen])
+
   const totals = {
     courses: courses.length,
     theory: courses.filter((c) => c.kind === "theory").length,
@@ -280,7 +413,7 @@ export default function SyllabusPage() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-5xl px-4 py-8">
+    <main className="mx-auto w-full max-w-5xl px-4 py-8 overflow-x-hidden">
       <header className="mb-6 flex items-center justify-between">
         <div className="space-y-1">
           <h1 className="text-pretty text-2xl font-semibold tracking-tight">5th Semester Syllabus</h1>
@@ -345,11 +478,11 @@ export default function SyllabusPage() {
 
         <Card>
           <CardContent className="p-0">
-            <Table>
+            <Table className="table-fixed w-full">
               <TableCaption className="sr-only">List of courses with contact hours, marks, and credits</TableCaption>
               <TableHeader className="sticky top-0 z-10 bg-background">
                 <TableRow>
-                  <TableHead className="w-[120px]">Code</TableHead>
+                  <TableHead className="w-24 sm:w-32 md:w-40">Code</TableHead>
                   <TableHead>Course Name</TableHead>
                   <TableHead className="hidden text-center md:table-cell">L</TableHead>
                   <TableHead className="hidden text-center md:table-cell">T</TableHead>
@@ -367,7 +500,7 @@ export default function SyllabusPage() {
                       <TableCell className="font-medium">
                         <span className="font-mono text-sm">{c.code}</span>
                       </TableCell>
-                      <TableCell className="whitespace-normal text-pretty">
+                      <TableCell className="whitespace-normal break-words text-pretty">
                         <div className="flex items-center justify-between gap-2">
                           <span>{c.name}</span>
                           {c.kind === "lab" && <Badge variant="outline">Lab</Badge>}
@@ -377,19 +510,19 @@ export default function SyllabusPage() {
                             </Badge>
                           )}
                           {c.code === "BCSES1-501" && (
-                            <Dialog>
+                            <Dialog open={cdOpen} onOpenChange={setCdOpen} modal>
                               <DialogTrigger asChild>
                                 <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                   View details
                                 </Button>
                               </DialogTrigger>
-                              <DialogContent className="w-[95vw] max-w-[640px] md:max-w-3xl lg:max-w-4xl max-h-[85vh] md:max-h-[80vh] overflow-y-auto p-0 md:rounded-lg">
-                                <DialogHeader className="sticky top-0 z-10 border-b bg-background/95 pe-12 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                                  <DialogTitle className="text-pretty text-base md:text-lg font-semibold tracking-tight">
+                              <DialogContent className="w-[calc(100vw-1rem)] sm:w-[90vw] max-w-[100vw] md:max-w-3xl lg:max-w-4xl max-h-[85vh] md:max-h-[80vh] overflow-y-auto overscroll-contain overflow-x-hidden p-0 rounded-none sm:rounded-lg">
+                                <DialogHeader className="sticky top-0 z-10 border-b bg-background/95 pe-12 px-5 sm:px-6 md:px-8 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-hidden">
+                                  <DialogTitle className="text-pretty text-base md:text-lg font-semibold tracking-tight text-center md:text-left">
                                     Compiler Design (BCSES1-501)
                                   </DialogTitle>
-                                  <nav aria-label="Quick links" className="mt-2 -mb-2 overflow-x-auto no-scrollbar">
-                                    <ul className="flex items-center gap-2 text-xs md:text-sm">
+                                  <nav aria-label="Quick links" className="mt-2 -mb-2 no-scrollbar">
+                                    <ul className="flex items-center justify-center md:justify-start gap-x-3 gap-y-1 text-xs md:text-sm flex-wrap">
                                       <li>
                                         <a
                                           href="#cd-overview"
@@ -433,8 +566,71 @@ export default function SyllabusPage() {
                                     </ul>
                                   </nav>
                                 </DialogHeader>
-                                <div className="p-5 sm:p-6 md:p-8">
+                                <div className="p-5 sm:p-6 md:p-8 mx-auto max-w-prose md:max-w-3xl w-full overflow-x-hidden">
                                   <CompilerDesignDetails />
+                                </div>
+                              </DialogContent>
+                            </Dialog>
+                          )}
+                          {c.code === "BCSES1-502" && (
+                            <Dialog open={dbmsOpen} onOpenChange={setDbmsOpen} modal>
+                              <DialogTrigger asChild>
+                                <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
+                                  View details
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className="w-[calc(100vw-1rem)] sm:w-[90vw] max-w-[100vw] md:max-w-3xl lg:max-w-4xl max-h-[85vh] md:max-h-[80vh] overflow-y-auto overscroll-contain overflow-x-hidden p-0 rounded-none sm:rounded-lg">
+                                <DialogHeader className="sticky top-0 z-10 border-b bg-background/95 pe-12 px-5 sm:px-6 md:px-8 backdrop-blur supports-[backdrop-filter]:bg-background/60 overflow-x-hidden">
+                                  <DialogTitle className="text-pretty text-base md:text-lg font-semibold tracking-tight text-center md:text-left">
+                                    Database Management System (BCSES1-502)
+                                  </DialogTitle>
+                                  <nav aria-label="Quick links" className="mt-2 -mb-2 no-scrollbar">
+                                    <ul className="flex items-center justify-center md:justify-start gap-x-3 gap-y-1 text-xs md:text-sm flex-wrap">
+                                      <li>
+                                        <a
+                                          href="#dbms-overview"
+                                          className="rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                                        >
+                                          Overview
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a
+                                          href="#dbms-objective"
+                                          className="rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                                        >
+                                          Objective
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a
+                                          href="#dbms-outcomes"
+                                          className="rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                                        >
+                                          Outcomes
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a
+                                          href="#dbms-contents"
+                                          className="rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                                        >
+                                          Contents
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a
+                                          href="#dbms-books"
+                                          className="rounded px-2 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                                        >
+                                          Books
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </nav>
+                                </DialogHeader>
+                                <div className="p-5 sm:p-6 md:p-8 mx-auto max-w-prose md:max-w-3xl w-full overflow-x-hidden">
+                                  <DbmsDetails />
                                 </div>
                               </DialogContent>
                             </Dialog>
