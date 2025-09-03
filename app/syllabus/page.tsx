@@ -7,6 +7,7 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { OfflineIndicator } from "@/components/offline-indicator"
 import { Fragment, useEffect, useState } from "react"
 
 type Course = {
@@ -1266,6 +1267,7 @@ export default function SyllabusPage() {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden bg-gradient-to-br from-slate-50/50 via-white to-blue-50/30 dark:from-slate-950/50 dark:via-slate-900 dark:to-blue-950/30 min-h-screen">
+      <OfflineIndicator />
       <header className="mb-8 relative">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="space-y-2">
@@ -1431,9 +1433,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Compiler Design (BCSES1-501)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setCdOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Compiler Design (BCSES1-501)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1496,9 +1511,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Database Management System (BCSES1-502)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setDbmsOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Database Management System (BCSES1-502)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1561,9 +1589,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Formal Language and Automata Theory (BCSES1-503)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setFlOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Formal Language and Automata Theory (BCSES1-503)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1626,9 +1667,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Design & Analysis of Algorithms (BCSES1-504)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setAlgoOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Design & Analysis of Algorithms (BCSES1-504)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1691,9 +1745,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Database Management System Laboratory (BCSES1-505)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setDbmsLabOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Database Management System Laboratory (BCSES1-505)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1748,9 +1815,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Design & Analysis of Algorithms Laboratory (BCSES1-506)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setAlgoLabOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Design & Analysis of Algorithms Laboratory (BCSES1-506)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -1805,9 +1885,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Finance & Accounting (BHSCM0-015)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setFinanceOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Finance & Accounting (BHSCM0-015)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -2044,9 +2137,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Web Technologies (BCSED1-513)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setWebTechOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Web Technologies (BCSED1-513)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
@@ -2109,9 +2215,22 @@ export default function SyllabusPage() {
                                 </DialogTrigger>
                                 <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                                   <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                                    <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                      Java Programming (BCSED1-514)
-                                    </DialogTitle>
+                                    <div className="flex items-center gap-3 mb-2">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => setJavaOpen(false)}
+                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                      >
+                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                        <span className="sr-only">Back</span>
+                                      </Button>
+                                      <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                        Java Programming (BCSED1-514)
+                                      </DialogTitle>
+                                    </div>
                                     <nav aria-label="Quick links" className="mt-3 -mb-1">
                                       <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                         <li>
