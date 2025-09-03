@@ -1438,10 +1438,34 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setCdOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          
+                                          // Add haptic feedback for mobile devices
+                                          if ('vibrate' in navigator) {
+                                            navigator.vibrate(50)
+                                          }
+                                          
+                                          // Visual feedback with temporary animation
+                                          const button = e.currentTarget
+                                          const svg = button.querySelector('svg')
+                                          
+                                          // Add loading state
+                                          button.style.transform = 'scale(0.85)'
+                                          button.style.opacity = '0.7'
+                                          if (svg) svg.style.transform = 'rotate(-10deg)'
+                                          
+                                          setTimeout(() => {
+                                            button.style.transform = ''
+                                            button.style.opacity = ''
+                                            if (svg) svg.style.transform = ''
+                                            setCdOpen(false)
+                                          }, 200)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-br from-green-500 via-green-600 to-emerald-600 hover:from-green-600 hover:via-green-700 hover:to-emerald-700 active:scale-90 text-white shadow-lg hover:shadow-2xl transition-all duration-300 ease-out border-2 border-green-400/30 hover:border-green-300/50 ring-0 hover:ring-4 hover:ring-green-500/20 backdrop-blur-sm group animate-pulse hover:animate-none focus:animate-none"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-md transition-transform duration-200 group-hover:-translate-x-0.5 group-active:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
@@ -1516,10 +1540,14 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setDbmsOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          setDbmsOpen(false)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 active:scale-95 text-white shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-green-400/20 hover:border-green-300/30"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
@@ -1594,10 +1622,14 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setFlOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          setFlOpen(false)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 active:scale-95 text-white shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-green-400/20 hover:border-green-300/30"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
@@ -1672,10 +1704,14 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setAlgoOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          setAlgoOpen(false)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 active:scale-95 text-white shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-green-400/20 hover:border-green-300/30"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
@@ -1750,10 +1786,14 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setDbmsLabOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          setDbmsLabOpen(false)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 active:scale-95 text-white shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-green-400/20 hover:border-green-300/30"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
@@ -1820,10 +1860,14 @@ function SyllabusPageComponent() {
                                       <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setAlgoLabOpen(false)}
-                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault()
+                                          e.stopPropagation()
+                                          setAlgoLabOpen(false)
+                                        }}
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 active:scale-95 text-white shadow-lg hover:shadow-xl transition-all duration-200 border-2 border-green-400/20 hover:border-green-300/30"
                                       >
-                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="h-6 w-6 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
