@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { OfflineIndicator } from "@/components/offline-indicator"
 import { Fragment, useEffect, useState } from "react"
+import dynamic from "next/dynamic"
 
 type Course = {
   code: string
@@ -1234,7 +1235,7 @@ function JavaProgrammingDetails() {
   )
 }
 
-export default function SyllabusPage() {
+function SyllabusPageComponent() {
   const [cdOpen, setCdOpen] = useState(false)
   const [dbmsOpen, setDbmsOpen] = useState(false)
   const [flOpen, setFlOpen] = useState(false)
@@ -1266,7 +1267,7 @@ export default function SyllabusPage() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-8 sm:py-12 overflow-x-hidden bg-gradient-to-br from-slate-50/50 via-white to-blue-50/30 dark:from-slate-950/50 dark:via-slate-900 dark:to-blue-950/30 min-h-screen">
+    <main className="mx-auto w-full max-w-6xl px-4 sm:px-6 pt-12 sm:pt-16 pb-8 sm:pb-12 overflow-x-hidden bg-gradient-to-br from-slate-50/50 via-white to-blue-50/30 dark:from-slate-950/50 dark:via-slate-900 dark:to-blue-950/30 min-h-screen">
       <OfflineIndicator />
       <header className="mb-8 relative">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -1425,7 +1426,7 @@ export default function SyllabusPage() {
                               </Badge>
                             )}
                             {c.code === "BCSES1-501" && (
-                              <Dialog open={cdOpen} onOpenChange={setCdOpen} modal>
+                              <Dialog open={cdOpen} onOpenChange={setCdOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1438,10 +1439,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setCdOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1503,7 +1504,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BCSES1-502" && (
-                              <Dialog open={dbmsOpen} onOpenChange={setDbmsOpen} modal>
+                              <Dialog open={dbmsOpen} onOpenChange={setDbmsOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1516,10 +1517,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setDbmsOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1581,7 +1582,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BCSES1-503" && (
-                              <Dialog open={flOpen} onOpenChange={setFlOpen} modal>
+                              <Dialog open={flOpen} onOpenChange={setFlOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1594,10 +1595,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setFlOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1659,7 +1660,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BCSES1-504" && (
-                              <Dialog open={algoOpen} onOpenChange={setAlgoOpen} modal>
+                              <Dialog open={algoOpen} onOpenChange={setAlgoOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1672,10 +1673,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setAlgoOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1737,7 +1738,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BCSES1-505" && (
-                              <Dialog open={dbmsLabOpen} onOpenChange={setDbmsLabOpen} modal>
+                              <Dialog open={dbmsLabOpen} onOpenChange={setDbmsLabOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1750,10 +1751,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setDbmsLabOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1807,7 +1808,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BCSES1-506" && (
-                              <Dialog open={algoLabOpen} onOpenChange={setAlgoLabOpen} modal>
+                              <Dialog open={algoLabOpen} onOpenChange={setAlgoLabOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -1820,10 +1821,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setAlgoLabOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -1877,7 +1878,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {c.code === "BHSCM0-015" && (
-                              <Dialog open={financeOpen} onOpenChange={setFinanceOpen} modal>
+                              <Dialog open={financeOpen} onOpenChange={setFinanceOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="ml-2 whitespace-nowrap bg-transparent">
                                     View details
@@ -2010,9 +2011,22 @@ export default function SyllabusPage() {
                           </DialogTrigger>
                           <DialogContent className="w-[95vw] sm:w-[90vw] md:w-[85vw] lg:w-[80vw] xl:w-[75vw] max-w-4xl max-h-[90vh] flex flex-col p-0 gap-0">
                             <DialogHeader className="flex-shrink-0 sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-4 sm:px-6 py-4">
-                              <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight text-center sm:text-left">
-                                {c.name} ({c.code})
-                              </DialogTitle>
+                              <div className="flex items-center gap-3 mb-2">
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  onClick={() => setFinanceOpen(false)}
+                                  className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
+                                >
+                                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                                  </svg>
+                                  <span className="sr-only">Back</span>
+                                </Button>
+                                <DialogTitle className="text-lg md:text-xl font-semibold tracking-tight flex-1">
+                                  {c.name} ({c.code})
+                                </DialogTitle>
+                              </div>
                               <nav aria-label="Quick links" className="mt-3 -mb-1">
                                 <ul className="flex items-center justify-center sm:justify-start gap-2 text-xs sm:text-sm flex-wrap">
                                   <li>
@@ -2129,7 +2143,7 @@ export default function SyllabusPage() {
                               <span className="text-slate-700 dark:text-slate-300">{e.name}</span>
                             </div>
                             {e.code === "BCSED1-513" && (
-                              <Dialog open={webTechOpen} onOpenChange={setWebTechOpen} modal>
+                              <Dialog open={webTechOpen} onOpenChange={setWebTechOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="text-xs h-7 bg-transparent">
                                     Details
@@ -2142,10 +2156,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setWebTechOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -2207,7 +2221,7 @@ export default function SyllabusPage() {
                               </Dialog>
                             )}
                             {e.code === "BCSED1-514" && (
-                              <Dialog open={javaOpen} onOpenChange={setJavaOpen} modal>
+                              <Dialog open={javaOpen} onOpenChange={setJavaOpen} modal suppressHydrationWarning>
                                 <DialogTrigger asChild>
                                   <Button size="sm" variant="outline" className="text-xs h-7 bg-transparent">
                                     Details
@@ -2220,10 +2234,10 @@ export default function SyllabusPage() {
                                         variant="ghost"
                                         size="sm"
                                         onClick={() => setJavaOpen(false)}
-                                        className="h-10 w-10 p-0 hover:bg-muted/50 flex-shrink-0 rounded-full border border-border/50"
+                                        className="h-12 w-12 p-0 flex-shrink-0 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg transition-all duration-200"
                                       >
-                                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                                         </svg>
                                         <span className="sr-only">Back</span>
                                       </Button>
@@ -2307,3 +2321,16 @@ export default function SyllabusPage() {
     </main>
   )
 }
+
+// Export as dynamic component to prevent hydration issues
+export default dynamic(() => Promise.resolve({ default: SyllabusPageComponent }), {
+  ssr: false,
+  loading: () => (
+    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-8 sm:py-12 min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent mx-auto mb-4"></div>
+        <p className="text-muted-foreground">Loading syllabus...</p>
+      </div>
+    </div>
+  )
+})

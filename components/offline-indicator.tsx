@@ -39,28 +39,28 @@ export function OfflineIndicator() {
   if (!showIndicator) return null
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+    <div className="fixed top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-50 px-4">
       <Badge 
         variant={isOnline ? "default" : "destructive"}
         className={`
-          flex items-center gap-2 px-3 py-2 text-sm font-medium
+          flex items-center gap-2 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium
           ${isOnline 
             ? "bg-green-500 hover:bg-green-600 text-white" 
             : "bg-orange-500 hover:bg-orange-600 text-white"
           }
-          transition-all duration-300 shadow-lg
+          transition-all duration-300 shadow-lg max-w-[calc(100vw-2rem)]
         `}
       >
         {isOnline ? (
           <>
-            <Wifi className="h-4 w-4" />
-            Back Online
+            <Wifi className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Back Online</span>
           </>
         ) : (
           <>
-            <WifiOff className="h-4 w-4" />
-            Offline Mode
-            <Download className="h-3 w-3 ml-1" />
+            <WifiOff className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="whitespace-nowrap">Offline Mode</span>
+            <Download className="h-2.5 w-2.5 sm:h-3 sm:w-3 ml-1" />
           </>
         )}
       </Badge>
